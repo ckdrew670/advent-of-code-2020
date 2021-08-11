@@ -18,7 +18,6 @@ How many passwords are valid according to their policies?
 
 
 // Fetch data from text file as array
-const { count } = require("console");
 let fs = require("fs");
 let data = fs.readFileSync("./input.txt").toString('utf-8');
 let dataArr = data.split("\n");
@@ -26,6 +25,7 @@ let dataArr = data.split("\n");
 let counter = 0;
 
 dataArr.map((val) => {
+    // create an object out of each entry
     let arrValues = val.split(" ");
     let objFromArr = {
         number: arrValues[0],
@@ -33,13 +33,16 @@ dataArr.map((val) => {
         text: arrValues[2],
     }
 
+    // get the highest and lowest numbers in the range
     let range = objFromArr.number.split("-");
     let lowestNum = range[0];
     let highestNum = range[1];
 
+    // search the text for the given letter
     let textArr = [...objFromArr.text];
     let filteredTextArr = textArr.filter((val) => val === objFromArr.letter);
 
+    // count the number of times the letter is used
     return filteredTextArr.length >= lowestNum && filteredTextArr.length <= highestNum ? counter += 1 : counter;
 })
 

@@ -40,6 +40,10 @@ let dataArr = data.split("\n");
 // set up empty array to globally store colour options
 let colours = [];
 
+////////////////////////////////////////////////////////////////////////////////////
+// SOME USEFUL REUSABLE FUNCTIONS
+////////////////////////////////////////////////////////////////////////////////////
+
 // reusable function that finds items that mention the given colour and filters into new array
 let findBagColour = (colour) => {
     return dataArr.filter(val => val.indexOf(` ${colour} bag`) > -1 ? val : null);
@@ -60,7 +64,11 @@ function onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
 }
 
-// create a recursive function to populate the global colours array
+
+///////////////////////////////////////////////////////////////////////////////////
+// RECURSIVE FUNCTION TO POPULATE GLOBAL COLOURS ARRAY
+///////////////////////////////////////////////////////////////////////////////////
+
 let populateColoursArray = (colour) => {
 
     let colourArray = [];
